@@ -1,0 +1,166 @@
+<app-header></app-header>
+<!-- Add the following import to your styles.css or styles.scss file -->
+<!-- @import "~@angular/material/prebuilt-themes/indigo-pink.css"; -->
+
+<div class="container-fluid1 text-center home px-3">
+    <p class="text-left px-3">
+        NewBility/CN
+        <button type="button" class="btn btn-danger float-end" (click)="navigation('LOC')">
+            <i class="fa fa-backward"> &nbsp;Back</i>
+        </button>
+    </p>
+</div>
+
+<div class="container mt-4">
+    <div class="col-md-2 text-white" style="background-color: red;">
+        <p>Exclusive TAX Sale</p>
+    </div>
+    <h4>Total Item in Cart:&nbsp;<i class="fa fa-cart-shopping"></i>(1)</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Quantity</th>
+                <th>Package-Type</th>
+                <th>Product-Details</th>
+                <th>HSN</th>
+                <th>Actual-Weight</th>
+                <th>Gross-Weight</th>
+                <th>Weight-Type</th>
+                <th>GST%</th>
+                <th>Amount</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let submission of formSubmissions">
+                <td>{{ submission.quantity }}</td>
+                <td>{{ submission.packageType }}</td>
+                <td>{{ submission.productDetails }}</td>
+                <td>{{ submission.hsn }}</td>
+                <td>{{ submission.actualWeight }}</td>
+                <td>{{ submission.grossWeight }}</td>
+                <td>{{ submission.weightType }}</td>
+                <td>{{ submission.gst }}</td>
+                <td>{{ submission.rap }}</td>
+                <td>{{ submission.Rate }}</td>
+              </tr>
+            <!-- <tr>
+                <td>200</td>
+                <td>carton</td>
+                <td>shree</td>
+                <td></td>
+                <td>200</td>
+                <td>200</td>
+                <td>K.G</td>
+                <td>5%GST</td>
+                <td>2000</td>
+                <td>
+                    <button type="submit" class="btn btn-danger float-end ">
+                        <i class="fa fa-xmark">&nbsp;</i>Remove
+                    </button>
+                </td>
+            </tr> -->
+            <tr>
+                <td style="background-color: aquamarine;"></td>
+                <td style="background-color: aquamarine;"></td>
+                <td style="background-color: aquamarine;"></td>
+                <td style="background-color: aquamarine;"> </td>
+                <td style="background-color: aquamarine;"></td>
+                <td style="background-color: aquamarine;"></td>
+                <td style="background-color: aquamarine;"></td>
+                <td style="background-color: aquamarine;">Total</td>
+                <td style="background-color: aquamarine;">2000</td>
+                <td style="background-color: aquamarine;"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="text-white float-end">
+        <p style="background-color: bisque;">
+            <button type="submit" class="btn btn-success float-end ">
+                <i class="fa fa-right-from-bracket"></i>Checkout
+            </button>
+        </p>
+    </div>
+    <br />
+    <div class="text-success">
+        <hr class="border border-danger border-2 opacity-50" />
+    </div>
+</div>
+
+<div class="container box p-20">
+    <div class="container-fluid align-items-center h-2" style="border-radius: 1px; background-color: green;">&nbsp;
+    </div>
+    <div class="w-100 row col-sm p-20" style="border-radius: 15px; border-color: aqua;">
+        <form [formGroup]="billityForm" (ngSubmit)="onSubmit()" class="mt-3">
+            <div class="row row-cols-6">
+                <div class="mb-3 col-xl">
+                    <label for="quantity" class="form-label">Quantity:</label>
+                    <input type="text" id="quantity" formControlName="quantity" class="form-control">
+                </div>
+                <div class="mb-3 col-xl">
+                    <label for="packageType" class="form-label">Package-Type:</label>
+                    <mat-select formControlName="packageType" class="form-control" placeholder="--Select--"
+                        (selectionChange)="onDropdownChange($event, 'packageType')">
+                        <mat-option *ngFor="let type of packageTypes" [value]="type">
+                            {{ type }}
+                        </mat-option>
+                    </mat-select>
+                </div>
+                <div class="mb-3 col-xl">
+                    <label for="productDetails" class="form-label">Product-Details:</label>
+                    <input type="text" id="productDetails" formControlName="productDetails" class="form-control">
+                </div>
+                <div class="mb-3 col-xl">
+                    <label for="hsn" class="form-label">HSN:</label>
+                    <input type="text" id="hsn" formControlName="hsn" class="form-control">
+                </div>
+                <div class="mb-3 col-xl">
+                    <label for="actualWeight" class="form-label">Actual-Weight:</label>
+                    <input type="text" id="actualWeight" formControlName="actualWeight" class="form-control">
+                </div>
+            </div>
+            <div class="row row-cols-6">
+                <div class="col-sm">
+                    <label for="grossWeight" class="form-label">Gross-Weight:</label>
+                    <input type="text" id="grossWeight" formControlName="grossWeight" class="form-control">
+                </div>
+                <div class="mb-3 col-xl">
+                    <label for="weightType" class="form-label">Weight-Type:</label>
+                    <mat-select formControlName="weightType" class="form-control" placeholder="--Select--"
+                        (selectionChange)="onDropdownChange($event, 'weightType')">
+                        <mat-option *ngFor="let type of weightTypes" [value]="type">
+                            {{ type }}
+                        </mat-option>
+                    </mat-select>
+                </div>
+                <div class="mb-3 col-xl">
+                    <label for="gst" class="form-label">GST%:</label>
+                    <mat-select formControlName="gst" class="form-control" placeholder="--Select--"
+                        (selectionChange)="onDropdownChange($event, 'gst')">
+                        <mat-option *ngFor="let gst of gstOptions" [value]="gst">
+                            {{ gst }}
+                        </mat-option>
+                    </mat-select>
+                </div>
+                <div class="mb-3 col-xl">                    
+                    <label for="rap" class="form-label">Rate as Per:</label>
+                    <mat-select formControlName="rap" class="form-control" placeholder="--Select--" (selectionChange)="onDropdownChange($event, 'rap')">
+                        <mat-option *ngFor="let option of rateOptions" [value]="option">
+                            {{ option }}
+                        </mat-option>
+                    </mat-select>
+                </div>
+                <div class="mb-3 col-xl">
+                    <label for="Rate" class="form-label">Rate:</label>
+                    <input type="text" id="Rate" formControlName="Rate" class="form-control">
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-success float-end"> <i class="fa-solid fa-cart-shopping"></i>Add to
+                    buy</button>
+            </div>
+        </form>
+
+    </div>
+    <br><br><br> <br><br><br>
+</div>

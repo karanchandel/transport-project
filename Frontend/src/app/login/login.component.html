@@ -1,0 +1,44 @@
+<!-- login.component.html -->
+<div class="main-design text-center">
+  <div class="center-box">
+    <div class="row text-center mb-2">
+      <!-- <div class="col-md-3 mt-2"> <img class="ml-5 mt-1" src="/assets/images_and_logos/PAE-LOGOS.png"
+                alt="" height="122px" width="125px"></div> -->
+      <div class="hed text-center">
+
+        <b> Login Form </b>
+
+      </div>
+    </div>
+    
+
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="mb-3">
+        <!-- <label for="username" class="form-label">Username:</label> -->
+        <input type="text" class="form-control" id="username" formControlName="username" placeholder="Enter Username">
+      </div>
+      <div class="mb-3">
+        <!-- <label for="password" class="form-label">Password:</label> -->
+        <input type="password" class="form-control" id="password" formControlName="password"
+          placeholder="Enter Password">
+      </div>
+      <button type="submit" class="btn btn-danger cc1">Login</button>
+      <div class="row">
+        <div class="col-md-3">
+
+          <div class="button-class colo" (click)="signup()">
+            <b> Sign Up </b>
+          </div>
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-5">
+          <div class="button-class colo mb-1">
+            Forgot password ?
+          </div>
+
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

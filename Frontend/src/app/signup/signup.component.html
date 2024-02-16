@@ -1,0 +1,60 @@
+<div class="main-design text-center">
+    <div class="center-box ">
+
+        <div class="row text-center mb-2">
+            <!-- <div class="col-md-3 mt-2"> <img class="ml-5 mt-1" src="/assets/images_and_logos/PAE-LOGOS.png"
+                alt="" height="122px" width="125px"></div> -->
+            <div class="hed text-center">
+            
+               
+                <b> SignUp Form</b>
+                
+            </div>
+        </div>
+        <br>
+
+        <form [formGroup]="signupForm" (ngSubmit)="signup()">
+            <div class="mb-3">
+                <!-- <label for="username" class="form-label">Username:</label> -->
+                <input type="text" class="form-control" id="username" formControlName="username"
+                    placeholder="Enter Username">
+            </div>
+            <div class="mb-3">
+                <!-- <label for="email" class="form-label">Email:</label> -->
+                <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter Email">
+            </div>
+            <div class="mb-3">
+                <!-- <label for="password" class="form-label">Password:</label> -->
+                <input type="password" class="form-control" id="password" formControlName="password"
+                    placeholder="Enter Password">
+            </div>
+            <div class="mb-3">
+                <!-- <label for="confirmPassword" class="form-label">Confirm Password:</label> -->
+                <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword"
+                    placeholder="Confirm Password">
+            </div>
+            <button type="submit" class="btn btn-danger cc1">Signup</button><br>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                    <div class="button-class">
+                        Already a member?
+                    </div>
+
+                </div>
+                <div class="col-md-3">
+                    <div class="button-class colo" (click)="login()">
+                        <b>Sign In</b>
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+<!-- <app-footer></app-footer> -->
