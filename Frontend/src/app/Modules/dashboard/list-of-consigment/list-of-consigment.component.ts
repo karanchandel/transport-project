@@ -27,7 +27,7 @@ table: boolean = true
   }
   openDialog() {
     const dialogRef = this.dialog.open(AddListOfConsignmentComponent, {
-      width: '82%',
+      width: '72%',
       data: { form: this.billityForm?.value }
     });
 
