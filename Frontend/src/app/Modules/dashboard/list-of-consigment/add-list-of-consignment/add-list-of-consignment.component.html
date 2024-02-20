@@ -1,1 +1,78 @@
-<p>add-list-of-consignment works!</p>
+
+<div class="w-100 row col-sm p-20" style="border: 
+1px
+ solid #fdb927 !important;
+    background: #2c3e50 !important;
+    border-radius: 
+5px
+ !important;">
+<form [formGroup]="billityForm"  (ngSubmit)="onSubmit()" class="mt-3 text-white">
+    <div class="row row-cols-6">
+        <div class="mb-3 col-sm">
+            <label for="quantity" class="form-label">Quantity:</label>
+            <input type="text" id="quantity" formControlName="quantity" class="form-control">
+        </div>
+        <div class="mb-3 col-sm">
+            <label for="packageType" class="form-label">Package-Type:</label>
+            <mat-select formControlName="packageType" class="form-control" placeholder="--Select--"
+                (selectionChange)="onDropdownChange($event, 'packageType')">
+                <mat-option *ngFor="let type of packageTypes" [value]="type">
+                    {{ type }}
+                </mat-option>
+            </mat-select>
+        </div>
+        <div class="mb-3 col-sm">
+            <label for="productDetails" class="form-label">Product-Details:</label>
+            <input type="text" id="productDetails" formControlName="productDetails" class="form-control">
+        </div>
+        <div class="mb-3 col-sm">
+            <label for="hsn" class="form-label">HSN:</label>
+            <input type="text" id="hsn" formControlName="hsn" class="form-control">
+        </div>
+        <div class="mb-3 col-sm">
+            <label for="actualWeight" class="form-label">Actual-Weight:</label>
+            <input type="text" id="actualWeight" formControlName="actualWeight" class="form-control">
+        </div>
+    </div>
+    <div class="row row-cols-6">
+        <div class="col-sm">
+            <label for="grossWeight" class="form-label">Gross-Weight:</label>
+            <input type="text" id="grossWeight" formControlName="grossWeight" class="form-control">
+        </div>
+        <div class="mb-3 col-sm">
+            <label for="weightType" class="form-label">Weight-Type:</label>
+            <mat-select formControlName="weightType" class="form-control" placeholder="--Select--"
+                (selectionChange)="onDropdownChange($event, 'weightType')">
+                <mat-option *ngFor="let type of weightTypes" [value]="type">
+                    {{ type }}
+                </mat-option>
+            </mat-select>
+        </div>
+        <div class="mb-3 col-sm">
+            <label for="gst" class="form-label">GST%:</label>
+            <mat-select formControlName="gst" class="form-control" placeholder="--Select--"
+                (selectionChange)="onDropdownChange($event, 'gst')">
+                <mat-option *ngFor="let gst of gstOptions" [value]="gst">
+                    {{ gst }}
+                </mat-option>
+            </mat-select>
+        </div>
+        <div class="mb-3 col-sm">                    
+            <label for="rap" class="form-label">Rate as Per:</label>
+            <mat-select formControlName="rap" class="form-control" placeholder="--Select--" (selectionChange)="onDropdownChange($event, 'rap')">
+                <mat-option *ngFor="let option of rateOptions" [value]="option">
+                    {{ option }}
+                </mat-option>
+            </mat-select>
+        </div>
+        <div class="mb-3 col-sm">
+            <label for="Rate" class="form-label">Rate:</label>
+            <input type="text" id="Rate" formControlName="Rate" class="form-control">
+        </div>
+    </div>
+    <div class="text-center mt-3">
+        <button type="submit" class="btn btn-success float-end"> <i class="fa-solid fa-cart-shopping"></i>Add to
+            buy</button>
+    </div>
+  </form>
+  </div>

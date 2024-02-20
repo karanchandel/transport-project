@@ -24,7 +24,7 @@ app.use(express.urlencoded({
   
 
 app.use(cors({
-    origin: ["http://localhost:4200", "http://localhost:5000", "http://localhost:62986"]
+    origin: ["http://localhost:4200", "http://localhost:5000", "http://localhost:60948"]
   }));
 
 

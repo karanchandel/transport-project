@@ -59,6 +59,16 @@ height: 100vh;
    border-radius: 4px;
    box-sizing: border-box;
  }
+ input[type=email]{
+  width: 90%;
+  margin-left: 4%;
+  /*padding: 12px 20px;*/
+  height: 35px;
+  display: inline-block;
+  border: 1px solid #ccc !important;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
  .btn-danger  {
    background-color: #2C3E50;
    border: none;

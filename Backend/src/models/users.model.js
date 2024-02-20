@@ -480,6 +480,26 @@ Users.signup = (req, result) => {
 
 
 
+Users.billityForm = (req, result) => {
+    try {
+        console.log("req.body-------->",req.body);  
+        dbConn.query("SELECT * FROM `billity-form`", (err, res) => {
+            console.log("Res---->", res);
+            console.log(err)
+            return result(null, {
+                data: res,
+                message: "submitted  Table 1  fetch Successfully"
+            });
+        })
+    } catch (err) {
+        console.log(err);
+        return result(null, {
+            message: 'Something Went Wrong'
+        });
+    }
+}
+
+
 
 
 

@@ -17,4 +17,6 @@ router.post('/login', usersController.loginUser);
 
 router.post( "/signup",usersController.signup);
 
+router.get( "/billity-form",usersController.billityForm);
+
 module.exports = router;

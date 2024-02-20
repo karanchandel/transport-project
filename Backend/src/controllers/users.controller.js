@@ -113,4 +113,14 @@ exports.loginUser = (async (req, res) => {
     })
 });
 
+exports.billityForm = (req, res) => {
+    UserModel.billityForm(req,(err, user) => {
+        if (err) {
+            res.send(err)
+        } else {
+            res.send(user)
+        }
+    })
+}
+
 
