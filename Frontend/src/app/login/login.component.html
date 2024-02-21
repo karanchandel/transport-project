@@ -5,14 +5,10 @@
       <!-- <div class="col-md-3 mt-2"> <img class="ml-5 mt-1" src="/assets/images_and_logos/PAE-LOGOS.png"
                 alt="" height="122px" width="125px"></div> -->
       <div class="hed text-center">
-
         <b> Login Form </b>
-
       </div>
     </div>
-    
-
-    <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <form  #regex="ngForm" [formGroup]="loginForm" >
       <div class="mb-3">
         <!-- <label for="username" class="form-label">Username:</label> -->
         <input type="text" class="form-control" id="username" formControlName="username" placeholder="Enter Username">
@@ -22,7 +18,11 @@
         <input type="password" class="form-control" id="password" formControlName="password"
           placeholder="Enter Password">
       </div>
-      <button type="submit" class="btn btn-danger cc1">Login</button>
+      <!-- <button type="submit" class="btn btn-danger cc1">Login</button> -->
+      <button type="login"  class="btn btn-primary" name="submit" value="DONE"
+      (click)="onlogin(loginForm.value)">
+      <i class="fas fa-check"></i>Login
+  </button>&nbsp;
       <div class="row">
         <div class="col-md-3">
 

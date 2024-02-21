@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../core/login.service';
 import { timeout } from 'rxjs/operators';
-
+import { RestService } from '../core/rest.service';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,18 +16,18 @@ export class LoginComponent {
     password: ['', Validators.required],
   });
 
-  constructor(private fb: FormBuilder ,private router: Router, private loginService:LoginService) {}
+  constructor( private restser: RestService,private restServ: RestService,private fb: FormBuilder ,private router: Router, private loginService:LoginService) {}
 
   ngOnInit() {
-    this.initLoginForm();
+
+      this.loginForm = this.fb.group({
+        username: ['', Validators.required],
+        password: ['', Validators.required],
+      });
+    
   }
 
-  private initLoginForm() {
-    this.loginForm = this.fb.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
-    });
-  }
+ 
 
   login() {
     // Implement your login logic here
@@ -49,18 +50,18 @@ export class LoginComponent {
       // this.router.navigate(['/dashboard']);
    // }
   }
+  onlogin(loginForm: any): void {
+    let url = environment.login
+ console.log(this.loginForm.value)
+    this.restser.post(url, {data: this.loginForm.value}, {}).subscribe(res => {
+      console.log(res)
+
+    })
+  }
   signup(){
     this.router.navigate(['/signup'])
   }
 }
  
   
- 
- 
-  
-
-
-function forgotPassword() {
-  throw new Error('Function not implemented.');
-}
 

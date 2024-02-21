@@ -1,11 +1,16 @@
-const API_URL = "http://localhost:5000";
+const API_URL = "http://localhost:6000";
+
 
 export const environment = {
+  production: false,
 
+  API_URL: API_URL,
 
-  // login component
-  login: API_URL + '/api/v1/users/login/', 
- //sign up component 
- users: API_URL + '/users/signup'
+  //sign up component 
+  login: API_URL + 'users/login',
+  signup: API_URL + '/users/signup',
 
-}
+  
+  
+};
+

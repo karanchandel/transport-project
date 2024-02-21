@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SignupService } from '../core/signup.service';
+
 
 
 @Component({
@@ -12,7 +12,7 @@ import { SignupService } from '../core/signup.service';
 export class SignupComponent implements OnInit {
   signupForm!: FormGroup;
 
-  constructor(private fb: FormBuilder,private router: Router,  private signupService: SignupService
+  constructor(private fb: FormBuilder,private router: Router,  
     ) {}
 
   ngOnInit() {
@@ -28,18 +28,18 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  signup() {
-    this.signupService.signUp(this.signupForm.value).subscribe(res => {
-      // console.log("===", res)
-      if (res["body"].status == 1) {
-        this.router.navigate([''])
-      }
-    })
+  // signup() {
+  //   this.signupService.signUp(this.signupForm.value).subscribe(res => {
+  //     // console.log("===", res)
+  //     if (res["body"].status == 1) {
+  //       this.router.navigate([''])
+  //     }
+  //   })
     
-    // Implement your signup logic here
+  //   // Implement your signup logic here
 
-    console.log('Signing up:', this.signupForm.value);
-  }
+  //   console.log('Signing up:', this.signupForm.value);
+  // }
   login() {
     this.router.navigate(["/login"])
   }
