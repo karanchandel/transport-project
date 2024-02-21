@@ -3,7 +3,9 @@ import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { AddListOfConsignmentComponent } from './add-list-of-consignment/add-list-of-consignment.component';
 @Component({
   selector: 'app-list-of-consigment',
   templateUrl: './list-of-consigment.component.html',
@@ -13,26 +15,48 @@ import { Router } from '@angular/router';
 export class ListOfConsigmentComponent implements AfterViewInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-
+table: boolean = true
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
-  currentComponent: any;
-  constructor(private router: Router ){}
+  billityForm: any;
+ 
+  constructor(private router: Router , private fb: FormBuilder , public dialog: MatDialog ){}
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+   
+  }
+  openDialog() {
+    const dialogRef = this.dialog.open(AddListOfConsignmentComponent, {
+      width: '72%',
+      data: { form: this.billityForm?.value }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
   navigation(path?: any) {
     this.router.navigate([`/dashboard/${path}`])
-  }
-}
 
+  }
+  
+ 
+  // onDropdownChange(event: any, controlName: string): void {
+  //   // Handle dropdown changes if needed
+  //   console.log(`Dropdown "${controlName}" selected value:`, event.value);
+  // }
+
+  }
+  // export class AddListOfConsignmentComponent {
+  //   // Component logic here
+  // }
 export interface PeriodicElement {
   name: string;
   position: number;
   weight: number;
   symbol: string;
 }
-
+  
 const ELEMENT_DATA: PeriodicElement[] = [
   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
   {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
@@ -55,3 +79,5 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K'},
   {position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca'},
 ];
+
+  

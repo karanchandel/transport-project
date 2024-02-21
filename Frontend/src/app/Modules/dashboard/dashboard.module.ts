@@ -11,6 +11,7 @@ import { BillityFormComponent } from './billity-form/billity-form.component';
 import { ReactiveFormsModule } from '@angular/forms'; 
 import { MatSelectModule } from '@angular/material/select';
 import { AddListOfConsignmentComponent } from './list-of-consigment/add-list-of-consignment/add-list-of-consignment.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -18,7 +19,7 @@ import { AddListOfConsignmentComponent } from './list-of-consigment/add-list-of-
     DashboardComponent,
     HeaderComponent,
     ChipsComponent,
-    ListOfConsigmentComponent,
+     ListOfConsigmentComponent,
     BillityFormComponent,
     AddListOfConsignmentComponent,
 
@@ -29,6 +30,7 @@ import { AddListOfConsignmentComponent } from './list-of-consigment/add-list-of-
     MatPaginatorModule,
     ReactiveFormsModule,
     MatSelectModule,
+    MatDialogModule,
     DashboardRoutingModule
   ]
 })
