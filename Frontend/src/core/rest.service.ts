@@ -197,12 +197,12 @@ export class RestService {
   }
 
 
-  // getFile(downloadFileUrl: any) {
-  //   // console.log('downloadFileUrl',downloadFileUrl);
+  getFile(downloadFileUrl: any) {
+    // console.log('downloadFileUrl',downloadFileUrl);
     
-  //   let fileUrl = environment.filePath + '?filePath=' + downloadFileUrl;
-  //   return this.http.get(fileUrl, { responseType: 'blob' });
-  // }
+    let fileUrl = environment.filePath + '?filePath=' + downloadFileUrl;
+    return this.http.get(fileUrl, { responseType: 'blob' });
+  }
 
   
   getpdfFile(downloadFileUrl: any) {

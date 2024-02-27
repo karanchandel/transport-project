@@ -77,8 +77,10 @@ Users.login = (req, result) => {
             }
         );
     } catch (err) {
-        console.error(err);
-        return callback({ message: 'Something Went Wrong' }, null);
+        console.log(err);
+        return result(null, {
+            message: 'Something Went Wrong'
+        });
     }
 };
 
