@@ -12,3 +12,7 @@
     border-color: aqua;
     background-color: aqua;
   }
+
+  ::ng-deep .mdc-dialog__surface{
+    overflow-y: hidden;
+  }
