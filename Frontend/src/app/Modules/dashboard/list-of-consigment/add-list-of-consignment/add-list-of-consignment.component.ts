@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-
+import { MatDialogRef } from '@angular/material/dialog';
+import {  FormControl ,Validators } from '@angular/forms';
 @Component({
   selector: 'app-add-list-of-consignment',
   templateUrl: './add-list-of-consignment.component.html',
@@ -17,7 +18,7 @@ export class AddListOfConsignmentComponent implements OnInit {
   rateOptions: string[] = ['Option1', 'Option2', 'Option3'];
   formSubmissions: any[] = [];
 
-  constructor(private router: Router, private fb: FormBuilder, public dialog: MatDialog) {}
+  constructor(public dialogReff: MatDialogRef<AddListOfConsignmentComponent>,private router: Router, private fb: FormBuilder, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     let currentUrl = this.router.url.split('/');
@@ -29,16 +30,18 @@ export class AddListOfConsignmentComponent implements OnInit {
 
   initForm(): void {
     this.billityForm = this.fb.group({
-      quantity: [''],
-      packageType: [''],
-      productDetails: [''],
-      hsn: [''],
-      actualWeight: [''],
-      grossWeight: [''],
-      weightType: [''],
-      gst: [''],
-      rap: [''],
-      action: ['']
+      quantity: new FormControl("", [Validators.required]),
+      
+      packageType: new FormControl("", [Validators.required]),
+      productDetails:new FormControl("", [Validators.required]),
+      hsn: new FormControl("", [Validators.required]),
+      actualWeight:new FormControl("", [Validators.required]),
+      grossWeight:new FormControl("", [Validators.required]),
+      weightType:new FormControl("", [Validators.required]),
+      gst:new FormControl("", [Validators.required]),
+      rap:new FormControl("", [Validators.required]),
+      action: new FormControl("", [Validators.required]),
+      Rate:new FormControl("", [Validators.required]),
     });
   }
 
@@ -57,7 +60,13 @@ export class AddListOfConsignmentComponent implements OnInit {
     }
   }
 
- 
+  closeButton(type: any | undefined) {
+    if (type == 'simple') {
+      this.dialogReff.close();
+    } else {
+      this.dialogReff.close("I am closed!!")
+    }
+  }
 
   onDropdownChange(event: any, controlName: string): void {
     console.log(`Dropdown "${controlName}" selected value:`, event.value);

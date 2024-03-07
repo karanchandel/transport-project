@@ -1,10 +1,27 @@
 
+<<<<<<< HEAD
 <div class="w-100 row col-sm " style="border: 5px solid #3498DB !important;background: #6E7B8B !important; border-radius: 5px!important; overflow-y: hidden;">
 <form [formGroup]="billityForm"  (ngSubmit)="onSubmit()" class="">
+=======
+
+
+    
+
+
+<div class="w-80 row col-sm p-2" id="sapna">
+ <div class="float-right " (click)="closeButton('simple')">
+    <i class="fa fa-close"></i>
+</div> 
+<form [formGroup]="billityForm"  (ngSubmit)="onSubmit()" class="mt-3 text-white">
+>>>>>>> d29cf8335a8cc8b70f67c594f1dd20c5b8134d0a
     <div class="row row-cols-6">
         <div class="mb-3 col-sm">
             <label for="quantity" class="form-label">Quantity:</label>
             <input type="text" id="quantity" formControlName="quantity" class="form-control">
+            <mat-error
+            *ngIf="billityForm.get('quantity')?.touched && billityForm.get('quantity')?.hasError('required')">
+            Please fill out this field.
+        </mat-error>
         </div>
         <div class="mb-3 col-sm">
             <label for="packageType" class="form-label">Package-Type:</label>
@@ -13,25 +30,47 @@
                 <mat-option *ngFor="let type of packageTypes" [value]="type">
                     {{ type }}
                 </mat-option>
+                
+
             </mat-select>
+            <mat-error
+                *ngIf="billityForm.get('packageType')?.touched && billityForm.get('packageType')?.hasError('required')">
+              Please Select form above 
+            </mat-error>
         </div>
         <div class="mb-3 col-sm">
             <label for="productDetails" class="form-label">Product-Details:</label>
             <input type="text" id="productDetails" formControlName="productDetails" class="form-control">
+            <mat-error
+            *ngIf="billityForm.get('productDetails')?.touched && billityForm.get('productDetails')?.hasError('required')">
+            Please fill out this field.
+        </mat-error>
         </div>
         <div class="mb-3 col-sm">
             <label for="hsn" class="form-label">HSN:</label>
             <input type="text" id="hsn" formControlName="hsn" class="form-control">
+            <mat-error
+            *ngIf="billityForm.get('hsn')?.touched && billityForm.get('hsn')?.hasError('required')">
+            Please fill out this field.
+        </mat-error>
         </div>
         <div class="mb-3 col-sm">
             <label for="actualWeight" class="form-label">Actual-Weight:</label>
             <input type="text" id="actualWeight" formControlName="actualWeight" class="form-control">
+            <mat-error
+            *ngIf="billityForm.get('actualWeight')?.touched && billityForm.get('actualWeight')?.hasError('required')">
+            Please Select From above
+        </mat-error>
         </div>
     </div>
     <div class="row row-cols-6">
         <div class="col-sm">
             <label for="grossWeight" class="form-label">Gross-Weight:</label>
             <input type="text" id="grossWeight" formControlName="grossWeight" class="form-control">
+            <mat-error
+            *ngIf="billityForm.get('grossWeight')?.touched && billityForm.get('grossWeight')?.hasError('required')">
+            Please fill out this field.
+        </mat-error>
         </div>
         <div class="mb-3 col-sm">
             <label for="weightType" class="form-label">Weight-Type:</label>
@@ -41,6 +80,10 @@
                     {{ type }}
                 </mat-option>
             </mat-select>
+            <mat-error
+            *ngIf="billityForm.get('weightType')?.touched && billityForm.get('weightType')?.hasError('required')">
+            Please  Select  from above.
+        </mat-error>
         </div>
         <div class="mb-3 col-sm">
             <label for="gst" class="form-label">GST%:</label>
@@ -50,6 +93,10 @@
                     {{ gst }}
                 </mat-option>
             </mat-select>
+            <mat-error
+            *ngIf="billityForm.get('gst')?.touched && billityForm.get('gst')?.hasError('required')">
+            Please Select from above
+        </mat-error>
         </div>
         <div class="mb-3 col-sm">                    
             <label for="rap" class="form-label">Rate as Per:</label>
@@ -58,10 +105,18 @@
                     {{ option }}
                 </mat-option>
             </mat-select>
+            <mat-error
+            *ngIf="billityForm.get('rap')?.touched && billityForm.get('rap')?.hasError('required')">
+            Please Select from above
+        </mat-error>
         </div>
         <div class="mb-3 col-sm">
             <label for="Rate" class="form-label">Rate:</label>
             <input type="text" id="Rate" formControlName="Rate" class="form-control">
+            <mat-error
+            *ngIf="billityForm.get('Rate')?.touched && billityForm.get('Rate')?.hasError('required')">
+            Please fill out this field.
+        </mat-error>
         </div>
     </div>
     <div class="text-center mt-3">

@@ -13,6 +13,27 @@
     background-color: aqua;
   }
 
+<<<<<<< HEAD
   ::ng-deep .mdc-dialog__surface{
     overflow-y: hidden;
   }
+=======
+  #sapna {
+    border: 5px solid #3498DB !important;
+    background: #6E7B8B !important; 
+    border-radius:5px!important;
+    margin-left:2px;
+  
+  }
+
+  .fa-remove:before, .fa-close:before, .fa-times:before {
+    content: "\f00d";
+    color: red;
+  
+  }
+   
+  .float-right {
+    text-align: end;
+    font-weight:bold;
+  }
+>>>>>>> d29cf8335a8cc8b70f67c594f1dd20c5b8134d0a

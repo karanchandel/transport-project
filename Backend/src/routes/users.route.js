@@ -1,22 +1,47 @@
 const express = require('express');
-
 const usersController = require('../controllers/users.controller.js');
 const router = express.Router();
+const jwt = require('jsonwebtoken');
+const secretkey = "secretkey";
+router.post("/signup", usersController.signup);
+router.post("/login", (req, res) => {
+    const user = {
+        id: 1,
+        username: "karan",
+        email: "karan@gmail.com"
+    }
+    jwt.sign({ user }, secretkey, { expiresIn: '300s' }, (err, token) => {
+        res.json({
+            token
+        })
+    })
+})
+router.post("/profile", verifytoken, (req, res) => {
 
-console.log('hello')
-router.post( "/form",usersController.form);
-router.post( "/saveAsDraft",usersController.saveAsDraft);
+    jwt.verify(req.token, secretkey, (err, authData) => {
+        if (err) {
+            res.send({ result: "invalid token " })
+        } else {
+            res.json({
+                message: "profile accessed",
+                authData
+            })
+        }
+    })
 
-router.get( "/submitdata",usersController.submitdata);
+});
+function verifytoken(req, res, next) {
+    const bearerheader = req.headers['authorization'];
+    if (typeof bearerheader !== 'undefined') {
 
-router.get( "/draftdata",usersController.draftdata);
-
-router.get( "/typenametable",usersController.typenametable);
-//router.post( "/login",usersController.login);
-router.post('/login', usersController.loginUser);
-
-router.post( "/signup",usersController.signup);
-
-router.get( "/billity-form",usersController.billityForm);
-
+        //     const bearer = bearerheader.split(" ");
+        //     const token = bearer[1];
+        req.token = bearerheader;
+        next();
+    } else {
+        res.send({
+            result: "Token is not valid"
+        })
+    }
+}
 module.exports = router;
