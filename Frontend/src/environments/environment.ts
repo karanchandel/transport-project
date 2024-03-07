@@ -7,7 +7,7 @@ export const environment = {
   API_URL: API_URL,
 
   //sign up component 
-  FormData: API_URL + '/users/form',
+  login: API_URL + '/users/login',
   saveAsDraft: API_URL + '/users/saveAsDraft',
   Submitdata: API_URL + '/users/submitdata',
   DraftData: API_URL + '/users/draftdata',

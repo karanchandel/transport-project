@@ -1,5 +1,8 @@
 var dbConn = require('../../config/db.config');
 require("dotenv").config();
+const CryptoJS = require('crypto-js');
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 let Users = (user) => {
     this.to = user.to;
@@ -11,6 +14,9 @@ let Users = (user) => {
     create_at = new Date() | any;
     updated_at = new Date() | any;
 }
+
+
+
 Users.signup = (req, result) => {
     try {
         let {
@@ -48,45 +54,8 @@ Users.signup = (req, result) => {
     }
 };
 
-Users.login = (req, result) => {
-    try {
-        const { username, password } = req.body;
-
-        dbConn.query(
-            'SELECT * FROM transport.register WHERE username = ? AND password = ?',
-            [username, password],
-            (err, res) => {
-                if (err) {
-                    console.error(err);
-                    return result(null, {
-                        message: 'Something Went Wrong'
-                    });
-                }
-                if (res.length > 0) {
-                    // If a record is found, return the user data
-                    return result(null, {
-                        data: res,
-                        message: 'hii'
-                    });
-                } else {
-                    // If no record is found, return an error indicating invalid credentials
-                    return res(null, {
-                        message: 'invalid credentials'
-                    });
-                }
-            }
-        );
-    } catch (err) {
-        console.log(err);
-        return result(null, {
-            message: 'Something Went Wrong'
-        });
-    }
-};
 
 
 
-
-        
 
 module.exports = Users;

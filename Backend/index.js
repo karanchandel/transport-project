@@ -3,8 +3,11 @@ const app = express();
 const cors =  require('cors');
 const bodyParser =  require('body-parser');
 const dotenv = require('dotenv');
+const bcrypt = require("bcrypt");
+
 const https = require("https");
 dotenv.config("./.env");
+
 app.use(bodyParser.urlencoded({
     extended: true
   }));
@@ -51,3 +54,5 @@ const PORT=process.env.PORT;
 app.listen(PORT,()=>{
     console.log(`listening on port: ${PORT}`);
 })
+
+

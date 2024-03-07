@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import {  FormControl,   } from '@angular/forms';
 @Component({
   selector: 'app-billity-form',
   templateUrl: './billity-form.component.html',
@@ -29,8 +30,9 @@ export class BillityFormComponent implements OnInit {
 
   initForm(): void {
     this.billityForm = this.fb.group({
-      quantity: [''],
-      packageType: [''],
+  
+      quantity: new FormControl("", [Validators.required, Validators.pattern("^[a-zA-Z\\-\\_\\s]+$")]),
+      packageType: ['', Validators.required],
       productDetails: [''],
       hsn: [''],
       actualWeight: [''],
@@ -38,7 +40,8 @@ export class BillityFormComponent implements OnInit {
       weightType: [''],
       gst: [''],
       rap: [''],
-      action: ['']
+      action: [''],
+    
     });
   }
 

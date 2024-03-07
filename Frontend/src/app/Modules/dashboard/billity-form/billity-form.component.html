@@ -96,6 +96,10 @@
                 <div class="mb-3 col-xl">
                     <label for="quantity" class="form-label">Quantity:</label>
                     <input type="text" id="quantity" formControlName="quantity" class="form-control">
+                  
+                    <mat-error *ngIf="billityForm.get('quantity')?.touched && billityForm.get('quantity')?.hasError('required')">
+                        Quantity is required.
+                    </mat-error>
                 </div>
                 <div class="mb-3 col-xl">
                     <label for="packageType" class="form-label">Package-Type:</label>
@@ -105,6 +109,9 @@
                             {{ type }}
                         </mat-option>
                     </mat-select>
+                    <mat-error *ngIf="billityForm.get('packageType')?.hasError('required')">
+                        Package Type is required.
+                    </mat-error>
                 </div>
                 <div class="mb-3 col-xl">
                     <label for="productDetails" class="form-label">Product-Details:</label>
